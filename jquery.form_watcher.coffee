@@ -21,6 +21,7 @@ jQuery.fn.extend
   reflow: ->
     $(@).data 'hash', $(@).hash()
     $(@).data 'changeTriggered', false
+    $(@).trigger 'watcher.unchange', target: @
 
   watcher: ->
     @each ->
@@ -29,3 +30,4 @@ jQuery.fn.extend
 
       $(@).on 'keyup', ':input', -> $(that).handleChange @
       $(@).on 'change', 'input[type="file"]', -> $(that).handleChange @
+
